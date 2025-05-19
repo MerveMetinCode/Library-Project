@@ -4,10 +4,8 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 
-# .env dosyasını yükle
 load_dotenv()
 
-# MySQL bağlantı bilgilerini oku
 mysql_user = os.getenv("MYSQL_USER")
 mysql_password = os.getenv("MYSQL_PASSWORD")
 mysql_host = os.getenv("MYSQL_HOST")
@@ -26,7 +24,7 @@ def get_connection():
         messagebox.showerror("Veritabanı Hatası", f"Bağlantı hatası: {err}")
         return None
 
-# --- Kitap Fonksiyonları ---
+
 def kitap_ekle(conn, ad, yazar, yayinevi, yayin_yili, kategori):
     try:
         with conn.cursor() as cursor:
@@ -105,7 +103,7 @@ def kitaplari_listele_gui():
 
         tree.pack(fill="both", expand=True)
 
-# --- Üye Fonksiyonları ---
+
 def uye_ekle_gui():
     def ekle():
         conn = get_connection()
@@ -175,7 +173,6 @@ def uyeleri_listele_gui():
 
         tree.pack(fill="both", expand=True)
 
-# --- Ödünç Verme Fonksiyonları ---
 def kitap_odunc_ver_gui():
     def ver():
         conn = get_connection()
@@ -215,7 +212,7 @@ def kitap_odunc_ver_gui():
 
     tk.Button(pencere, text="Ver", command=ver).grid(row=4, column=1)
 
-# --- İade Fonksiyonu ---
+
 def kitap_iade_gui():
     def iade_et():
         conn = get_connection()
@@ -242,7 +239,7 @@ def kitap_iade_gui():
 
     tk.Button(pencere, text="İade Et", command=iade_et).grid(row=1, column=1)
 
-# --- Ana Pencere ---
+
 root = tk.Tk()
 root.title("Kütüphane Otomasyonu")
 
